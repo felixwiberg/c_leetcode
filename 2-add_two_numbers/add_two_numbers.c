@@ -17,37 +17,43 @@ struct ListNode{
 
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 
-	int n = 0;
-	int sum1 = 0;
-	int sum2 = 0;
+	int n, tmp_sum = 0, sum_of_list_vals = 0;
 	while(l1 != NULL){
-		sum1 += pow(10, n)*l1->val;
-		printf("%d %d\n", n, sum1);
+		tmp_sum += pow(10, n)*l1->val;
 		l1 = l1->next;
 		n++;
 	}
-	
-	n = 0;	
+	sum_of_list_vals += tmp_sum;	
+
+	n = 0;
+	tmp_sum = 0;
 	while(l2 != NULL){
-		sum2 += pow(10, n)*l2->val;
-		printf("%d %d\n", n, sum2);
+		tmp_sum += pow(10, n)*l2->val;
 		l2 = l2->next;
 		n++;
 	}
-
-	int sum3 = sum1+sum2;
+	sum_of_list_vals += tmp_sum;	
 
 	struct ListNode* head = NULL;
 	head = malloc(sizeof *head);
 	struct ListNode* current = NULL;
 	current = head;
-	while(sum3 != 0){
+	
+	while(sum_of_list_vals != 0){
+		current->val = sum_of_list_vals%10;
+		printf("%d %d\n", current->val, sum_of_list_vals);
+		sum_of_list_vals /= 10;
+		printf("%d %d\n\n", current->val, sum_of_list_vals);
+		
 		struct ListNode* next = NULL;
-		next = malloc(sizeof *next);
-		current->val = sum3%10;
-		sum3 /= 10;
-		current->next = next;
-		current = next;	
+		
+		if(sum_of_list_vals!=0){
+			next = malloc(sizeof *next);
+			current->next = next;
+			current = next;	
+		}else{
+			current->next = NULL;
+		}
 	}
 
 	return head;
@@ -71,12 +77,12 @@ int main(){
 	l2_second = malloc(sizeof *l2_second);
 	l2_third = malloc(sizeof *l2_third);
 	
-	l1_head->val = 1;
-	l1_second->val = 2; 
-	l1_third->val = 3;
-	l2_head->val = 4;
-	l2_second->val = 5;
-	l2_third->val = 6;
+	l1_head->val = 2;
+	l1_second->val = 4; 
+	l1_third->val = 6;
+	l2_head->val = 5;
+	l2_second->val = 3;
+	l2_third->val = 1;
 
 	l1_head->next = l1_second;
 	l1_second->next = l1_third;
