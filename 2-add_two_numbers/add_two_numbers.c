@@ -41,12 +41,15 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 	head = malloc(sizeof *head);
 	struct ListNode* current = NULL;
 	current = head;
+	
+	if(sum_of_list_vals == 0){
+		head->val = 0;
+		head->next = NULL;
+	}
 
 	while(sum_of_list_vals != 0){
 		current->val = sum_of_list_vals%10;
-		printf("%d %d\n", current->val, sum_of_list_vals);
 		sum_of_list_vals /= 10;
-		printf("%d %d\n\n", current->val, sum_of_list_vals);
 		
 		struct ListNode* next = NULL;
 		
@@ -59,10 +62,6 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 		}
 	}
 
-	if(sum_of_list_vals == 0){
-		head->val = 0;
-		head->next = NULL;
-	}
 
 	return head;
 }
