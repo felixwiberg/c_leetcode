@@ -11,10 +11,11 @@ int numJewelsInStones(char* J, char* S){
 	for(int i = 0; i < strlen(J); i++){
 		count += (int)ascii[J[i]];
 	}
-	printf("%d",count);
+	return count;
 }
 
 int main(){
 	int j = numJewelsInStones("csDfgV", "asdGgbAStyY");
+	printf("%d",j);
 	return 0;
 }
