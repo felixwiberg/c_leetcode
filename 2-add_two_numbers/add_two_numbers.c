@@ -17,52 +17,38 @@ struct ListNode{
 
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 
-	int n = 0;
-	int tmp_sum = 0;
-       	int sum_of_list_vals = 0;
-	
-	while(l1 != NULL){
-		tmp_sum += pow(10, n)*l1->val;
-		l1 = l1->next;
-		n++;
-	}
-	sum_of_list_vals += tmp_sum;	
-
-	n = 0;
-	tmp_sum = 0;
-	while(l2 != NULL){
-		tmp_sum += pow(10, n)*l2->val;
-		l2 = l2->next;
-		n++;
-	}
-	sum_of_list_vals += tmp_sum;	
+	int 	n = 0,
+	    	tmp_sum = 0,
+		val_to_next = 0,
+		carry = 0;
 
 	struct ListNode* head = NULL;
 	head = malloc(sizeof *head);
-	struct ListNode* current = NULL;
-	current = head;
+	struct ListNode* next_node = NULL, *current_node = head;
 	
-	if(sum_of_list_vals == 0){
-		head->val = 0;
-		head->next = NULL;
-	}
-
-	while(sum_of_list_vals != 0){
-		current->val = sum_of_list_vals%10;
-		sum_of_list_vals /= 10;
-		
-		struct ListNode* next = NULL;
-		
-		if(sum_of_list_vals!=0){
-			next = malloc(sizeof *next);
-			current->next = next;
-			current = next;	
-		}else{
-			current->next = NULL;
+	while(l1 != NULL || l2 != NULL || carry > 0){
+		tmp_sum = 0;
+		if(l1 != NULL){
+			tmp_sum += l1->val;
+			l1 = l1->next;
 		}
+		if(l2 != NULL){
+			tmp_sum += l2->val;
+			l2 = l2->next;
+		}
+		val_to_next = tmp_sum%10 + carry;
+		carry = val_to_next/10;
+
+		printf("val %d\n", val_to_next);
+		current_node->val = val_to_next;
+		struct ListNode* next_node = NULL;
+		next_node = malloc(sizeof *next_node);
+		current_node->next = next_node;
+		current_node = next_node;
 	}
-
-
+	current_node->next = NULL;
+	free(current_node);
+	
 	return head;
 }
 
@@ -84,27 +70,27 @@ int main(){
 	l2_second = malloc(sizeof *l2_second);
 	l2_third = malloc(sizeof *l2_third);
 	
-	l1_head->val = 0;
+	l1_head->val = 1;
 	l1_second->val = 4; 
 	l1_third->val = 6;
-	l2_head->val = 0;
+	l2_head->val = 1;
 	l2_second->val = 3;
 	l2_third->val = 1;
 
-	l1_head->next = NULL; //l1_second;
+	l1_head->next = l1_second;
 	l1_second->next = l1_third;
 	l1_third->next = NULL;
-	l2_head->next = NULL; //l2_second;
+	l2_head->next = l2_second;
 	l2_second->next = l2_third;
 	l2_third->next = NULL;
 
 	struct ListNode* returnlist;
 	returnlist = addTwoNumbers(l1_head, l2_head);
 	printf("%d\n",returnlist->val);
-	//returnlist = returnlist->next;
-	//printf("%d\n",returnlist->val);
-	//returnlist = returnlist->next;
-	//printf("%d\n",returnlist->val);
+	returnlist = returnlist->next;
+	printf("%d\n",returnlist->val);
+	returnlist = returnlist->next;
+	printf("%d\n",returnlist->val);
 
 	free(l1_head);
 	free(l1_second);
