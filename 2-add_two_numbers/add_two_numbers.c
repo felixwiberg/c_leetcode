@@ -41,7 +41,6 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 		carry = val_to_next/10;
 		val_to_next = val_to_next%10;
 
-		printf("val %d\n, carry %d\n", val_to_next, carry);
 		current_node->val = val_to_next;
 		struct ListNode* next_node = NULL;
 		next_node = malloc(sizeof *next_node);
