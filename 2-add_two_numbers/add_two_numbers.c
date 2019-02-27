@@ -36,10 +36,11 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 			tmp_sum += l2->val;
 			l2 = l2->next;
 		}
-		val_to_next = tmp_sum%10 + carry;
+		val_to_next = (tmp_sum + carry);
 		carry = val_to_next/10;
+		val_to_next = val_to_next%10;
 
-		printf("val %d\n", val_to_next);
+		printf("val %d\n, carry %d\n", val_to_next, carry);
 		current_node->val = val_to_next;
 		struct ListNode* next_node = NULL;
 		next_node = malloc(sizeof *next_node);
@@ -70,12 +71,12 @@ int main(){
 	l2_second = malloc(sizeof *l2_second);
 	l2_third = malloc(sizeof *l2_third);
 	
-	l1_head->val = 1;
+	l1_head->val = 2;
 	l1_second->val = 4; 
-	l1_third->val = 6;
-	l2_head->val = 1;
-	l2_second->val = 3;
-	l2_third->val = 1;
+	l1_third->val = 3;
+	l2_head->val = 5;
+	l2_second->val = 6;
+	l2_third->val = 4;
 
 	l1_head->next = l1_second;
 	l1_second->next = l1_third;
