@@ -25,6 +25,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 	struct ListNode* head = NULL;
 	head = malloc(sizeof *head);
 	struct ListNode* next_node = NULL, *current_node = head;
+	struct ListNode* last_node = NULL;
 	
 	while(l1 != NULL || l2 != NULL || carry > 0){
 		tmp_sum = 0;
@@ -45,9 +46,10 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 		struct ListNode* next_node = NULL;
 		next_node = malloc(sizeof *next_node);
 		current_node->next = next_node;
+		last_node = current_node;
 		current_node = next_node;
 	}
-	current_node->next = NULL;
+	last_node->next = NULL;
 	free(current_node);
 	
 	return head;
