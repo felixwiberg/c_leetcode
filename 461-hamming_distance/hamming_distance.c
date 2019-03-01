@@ -4,20 +4,20 @@
 int c[32];
 int d[32];
 
-void fast_d2b(int x, int *a){
+int fast_d2b(int x, int y, int *c, int *d){
 	int i;
+	int res = 0;
 	for(i=0;i<32;i++){
-		*(a++) = (x >> i) & 0x1;
+		*(c++) = (x >> i) & 0x1;
+		*(d++) = (y >> i) & 0x1;
+		res += abs(c[i] - d[i]);
 	}
+	return res;
 }
 
 int hammingDistance(int x, int y) {
-	int res = 0, i;
-	fast_d2b(x, c);
-	fast_d2b(y, d);
-	for(i = 0; i<32; i++){
-		res += abs(c[i]-d[i]);
-	}
+	int res = 0;
+	res = fast_d2b(x, y, c, d);
 	return res;
 }
 
