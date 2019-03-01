@@ -8,9 +8,11 @@ int fast_d2b(int x, int y, int *c, int *d){
 	int i;
 	int res = 0;
 	for(i=0;i<32;i++){
-		*(c++) = (x >> i) & 0x1;
-		*(d++) = (y >> i) & 0x1;
-		res += abs(c[i-1] - d[i-1]);
+		*(c) = (x >> i) & 0x1;
+		*(d) = (y >> i) & 0x1;
+		res += abs(*c - *d);
+		d++;
+		c++;
 	}
 	return res;
 }
@@ -24,7 +26,7 @@ int hammingDistance(int x, int y) {
 int main(){
 	int hamming_distance = 0;
 	int x = 1;
-	int y = 4;
+	int y = 21309589;
 	hamming_distance = hammingDistance(x, y);
 	printf("The hamming distance between %d and %d is %d\n", x, y, hamming_distance);
 
