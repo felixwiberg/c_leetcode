@@ -12,8 +12,9 @@ int lengthOfLongestSubstring(char* s) {
         }else{
             if(length>longest){
                 longest = length;
-                length = 0;
+                length = 1;
                 memset(ascii, 0, sizeof ascii);
+                ascii[(int)s[i]]++;
             }
         }
     }
@@ -24,7 +25,7 @@ int lengthOfLongestSubstring(char* s) {
 }
 
 int main(){
-    char * s = "hejadejamejagkbzq";
+    char * s = "babb";
     int p = lengthOfLongestSubstring(s);
     printf("The longest substring is %d", p);
     return 0;
