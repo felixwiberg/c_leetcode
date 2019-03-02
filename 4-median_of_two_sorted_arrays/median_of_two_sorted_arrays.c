@@ -24,7 +24,7 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
             printf("c1<c2 at run %d", i);
             current = c1;
             if(i1>nums1Size-2){
-                c1 = 10000;
+                c1 = 2147483647;
             }else{
                 i1++;
                 c1 = nums1[i1];
@@ -33,7 +33,7 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
             printf("c2<c1 at run %d", i);
             current = c2;
             if(i2>nums2Size-2){
-                c2 = 10000;
+                c2 = 2147483647;
             }else{
                 i2++;
                 c2 = nums2[i2];
