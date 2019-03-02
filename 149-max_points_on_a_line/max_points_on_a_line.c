@@ -6,6 +6,10 @@ struct Point {
 };
 
 int maxPoints(struct Point* points, int pointsSize) {
+    if(pointsSize == 1){
+        return 1;
+    }
+    
     double  xdiff = 0,
             ydiff = 0,
             m = 0,
@@ -51,7 +55,7 @@ int main(){
     a[3].x = 2;
     a[3].y = 2;
 
-    int res = maxPoints(a, 4);
+    int res = maxPoints(a, 1);
     printf("%d", res);
     return 0;
 }
