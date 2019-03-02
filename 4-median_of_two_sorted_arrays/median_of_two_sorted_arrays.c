@@ -14,7 +14,7 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
         if(i2==nums2Size || nums1[i1] < nums2[i2]){
             current = nums1[i1];
             i1++;
-        }else if(i1==nums1Size || nums2[i1] < nums1[i2]){
+        }else if(i1==nums1Size || nums2[i2] < nums1[i1]){
             current = nums2[i2];
             i2++;
         }else{
@@ -31,9 +31,9 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
 }
 
 int main(){
-    int nums1[] = {1,2,3,4};
-    int nums2[] = {0,40};
-    double res = findMedianSortedArrays(nums1, 4, nums2, 2);
+    int nums1[] = {1,3};
+    int nums2[] = {2};
+    double res = findMedianSortedArrays(nums1, 2, nums2, 1);
     printf("%5.3f", res);
     return 0;
 }
