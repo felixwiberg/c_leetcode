@@ -21,7 +21,6 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     for(int i = 0; i <= midpoint; i++){
         prev = current;
         if(c1<c2){
-            printf("c1<c2 at run %d", i);
             current = c1;
             if(i1>nums1Size-2){
                 c1 = 2147483647;
@@ -30,7 +29,6 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
                 c1 = nums1[i1];
             }
         }else if (c2<c1){
-            printf("c2<c1 at run %d", i);
             current = c2;
             if(i2>nums2Size-2){
                 c2 = 2147483647;
@@ -39,12 +37,11 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
                 c2 = nums2[i2];
             }
         }else{
-            printf("c2=c1 at run %d", i);
-            if(i1+1<nums1Size){
+            if(i1<nums1Size-1){
                 current = c1;
                 i1++;
                 c1 = nums1[i1];
-            }else if(i2+1<nums2Size){
+            }else if(i2<nums2Size-1){
                 current = c2;
                 i2++;
                 c2 = nums2[i2];
@@ -52,9 +49,6 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
                 current = c1;
             }
         }
-        printf("prev %d current %d\n", prev, current);
-        printf("i1 %d i2 %d\n", i1, i2);
-        printf("c1 %d c2 %d\n", c1, c2);
     }
     return odd?current:(current+prev)/2.0;
 }
