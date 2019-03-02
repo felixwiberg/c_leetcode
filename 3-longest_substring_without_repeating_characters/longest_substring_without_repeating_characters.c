@@ -6,9 +6,9 @@ int lengthOfLongestSubstring(char* s) {
     int length = 0;
     int longest = 0;
     for(int i = 0; i<strlen(s); i++){
-        if(ascii[(int)s[i]] == 0){
+        if(ascii[s[i]] == 0){
             length++;
-            ascii[(int)s[i]]++;
+            ascii[s[i]]++;
         }else{
             if(length>longest){
                 longest=length;
@@ -17,7 +17,7 @@ int lengthOfLongestSubstring(char* s) {
                 i = i-(length-1);
             }
             memset(ascii, 0, sizeof ascii);
-            ascii[(int)s[i]]++;
+            ascii[s[i]]++;
             length = 1;
         }
     }
