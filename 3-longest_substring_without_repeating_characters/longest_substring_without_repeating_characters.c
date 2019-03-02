@@ -1,34 +1,28 @@
 #include <stdio.h>
 #include <string.h>
 
-int lengthOfLongestSubstring(char* s) {
-    int ascii[256] = {0};
-    int length = 0;
-    int longest = 0;
-    for(int i = 0; i<strlen(s); i++){
-        if(ascii[s[i]] == 0){
-            length++;
-            ascii[s[i]]++;
-        }else{
-            if(length>longest){
-                longest=length;
-            }
-            if(length>1){
-                i = i-(length-1);
-            }
-            memset(ascii, 0, sizeof ascii);
-            ascii[s[i]]++;
-            length = 1;
+int lengthOfLongestSubstring(char* s)
+{
+    int len = 0;
+    char *end=s,*temp;
+    char *addresses[256]={NULL};
+    while(*end){
+        //takes the element at ascii-value *end
+        temp = addresses[*end];
+        //stores the string end at ascii-value *end
+        addresses[*end]=end;
+        //if there is a collision
+        if(temp>=s){
+            len=end-s>len?end-s:len;
+            s = temp+1;
         }
+        end++;
     }
-    if(length>longest){
-        longest = length;
-    }
-    return longest;
+    len=end-s>len?end-s:len;
+    return len;
 }
-
 int main(){
-    char * s = "abcddefg";
+    char * s = "abcdefdklmn";
     int p = lengthOfLongestSubstring(s);
     printf("The longest substring is %d", p);
     return 0;
