@@ -22,8 +22,8 @@ int maxPoints(struct Point* points, int pointsSize) {
 
             if(xdiff != 0){
                 for(int l = 0; l<pointsSize; l++){
-                    if((points[l].y-points[i].y)*(points[i].x-points[j].x) ==
-                            (points[i].y-points[j].y)*(points[l].x-points[i].x)){    
+                    if( points[l].y ==
+                        (points[j].y-points[i].y)*(points[l].x-points[j].x)/(points[j].x - points[i].x)+points[j].y){    
                         this_line_count++;
                     }
                 }
