@@ -11,9 +11,7 @@ int maxPoints(struct Point* points, int pointsSize) {
     }
     
     double  xdiff = 0,
-            ydiff = 0,
-            m = 0,
-            k = 0;
+            ydiff = 0;
     int this_line_count = 0,
         record = 0;
     for(int i = 0; i<pointsSize; i++){
@@ -23,10 +21,9 @@ int maxPoints(struct Point* points, int pointsSize) {
             ydiff = points[i].y - points[j].y;
 
             if(xdiff != 0){
-                k = ydiff/xdiff;
-                m = points[i].y-k*points[i].x;
                 for(int l = 0; l<pointsSize; l++){
-                    if(points[l].y*xdiff == ydiff*points[l].x + points[i].y*xdiff -ydiff*points[i].x){
+                    if((points[l].y-points[i].y)*(points[i].x-points[j].x) ==
+                            (points[i].y-points[j].y)*(points[l].x-points[i].x)){    
                         this_line_count++;
                     }
                 }
@@ -45,16 +42,13 @@ int maxPoints(struct Point* points, int pointsSize) {
 
 int main(){
     struct Point a[4];
-    a[0].x = 3;
-    a[0].y = 1;
-    a[1].x = -6;
-    a[1].y = -1;
-    a[2].x = 3;
-    a[2].y = 1;
-    a[3].x = 12;
-    a[3].y = 3;
-
-    int res = maxPoints(a, 4);
+    a[0].x = 0;
+    a[0].y = 0;
+    a[1].x = 94911151;
+    a[1].y = 94911150;
+    a[2].x = 94911152;
+    a[2].y = 94911151;
+    int res = maxPoints(a, 3);
     printf("%d", res);
     return 0;
 }
