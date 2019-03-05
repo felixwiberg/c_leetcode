@@ -1,2 +1,2 @@
 # c_leetcode
-Learning C with leetcode
+👨‍🎓 Learning C with leetcode
