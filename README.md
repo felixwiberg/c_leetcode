@@ -1,2 +1,2 @@
-# c_leetcode
-👨‍🎓 Learning C with leetcode
+# Cling Clang Clong : leetcode
+👨‍🎓 Practicing C with leetcode
