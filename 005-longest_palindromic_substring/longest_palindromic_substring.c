@@ -40,8 +40,8 @@ char* longestPalindrome(char* s){
         }
     }
     if(longest>0){
-        char* to = malloc(sizeof(char)*longest);
-        strncpy(to, s+start, longest);
+        char *to = malloc(sizeof(char) * longest);
+        memcpy(to, s+start, longest);
         return to;
     }else{
         char* to = malloc(sizeof(char));
@@ -51,7 +51,7 @@ char* longestPalindrome(char* s){
 }
 
 int main(){
-    char *s = "babad";
+    char *s = "buibbdsad";
     char *ret = longestPalindrome(s);
     printf("%s\n", ret);
     return 0;
