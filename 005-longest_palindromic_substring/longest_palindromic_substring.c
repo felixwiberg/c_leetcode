@@ -40,11 +40,11 @@ char* longestPalindrome(char* s){
         }
     }
     if(longest>0){
-        char *to = (char*) malloc(longest);
+        char* to = malloc(sizeof(char)*longest);
         strncpy(to, s+start, longest);
         return to;
     }else{
-        char *to = malloc(sizeof(char));
+        char* to = malloc(sizeof(char));
         *to = s[0];
         return to;
     }
