@@ -20,14 +20,12 @@ char* longestPalindrome(char* s){
         }
         b = s[ind_left];
         a = s[ind_right];
-        printf("%c %c\n", a,b);
         while(a == b){
             if(length>longest){
                 start = ind_left;
                 end = ind_right;
                 longest = length;
             }
-            printf("       %c %c %d\n %d %d\n\n", a,b,longest, ind_left, ind_right);
             if(ind_left > 0 && ind_right<string_length){
                 ind_left--;
                 ind_right++;
@@ -53,9 +51,8 @@ char* longestPalindrome(char* s){
 }
 
 int main(){
-    char *s = "kkka";
+    char *s = "babad";
     char *ret = longestPalindrome(s);
-    printf("\n");
     printf("%s\n", ret);
     return 0;
 }
