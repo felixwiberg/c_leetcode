@@ -38,11 +38,11 @@ char* longestPalindrome(char* s){
                 break;
             }
         }
-        char* res = malloc(longest+1);
-        memcpy(res, s+start, longest);
-        res[longest] = '\0';
-        return res;
     }
+    char* res = malloc(longest+1);
+    memcpy(res, s+start, longest);
+    res[longest] = '\0';
+    return res;
 }
 
 int main(){
