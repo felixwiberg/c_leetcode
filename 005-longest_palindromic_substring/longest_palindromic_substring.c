@@ -3,8 +3,9 @@
 #include <string.h>
 //jiijb
 char* longestPalindrome(char* s){
-    int a, b, length = 0, longest = 0, start = 0, end = 0, ind_left = 0, ind_right = 0;
+    int a, b, length = 0, longest = 0, start = 0, ind_left = 0, ind_right = 0;
     int string_length = strlen(s);
+    printf("%s\n", s);
     if(string_length == 0){ return ""; }
     if(string_length == 1){ return s; }
     if(string_length == 2 && s[0] == s[1]){ return s; }
@@ -23,7 +24,6 @@ char* longestPalindrome(char* s){
         while(a == b){
             if(length>longest){
                 start = ind_left;
-                end = ind_right;
                 longest = length;
             }
             if(ind_left > 0 && ind_right<string_length){
@@ -38,20 +38,15 @@ char* longestPalindrome(char* s){
                 break;
             }
         }
-    }
-    if(longest>0){
-        char *to = malloc(sizeof(char) * longest);
-        memcpy(to, s+start, longest);
-        return to;
-    }else{
-        char* to = malloc(sizeof(char));
-        *to = s[0];
-        return to;
+        char* res = malloc(longest+1);
+        memcpy(res, s+start, longest);
+        res[longest] = '\0';
+        return res;
     }
 }
 
 int main(){
-    char *s = "buibbdsad";
+    char *s = "asd";
     char *ret = longestPalindrome(s);
     printf("%s\n", ret);
     return 0;
