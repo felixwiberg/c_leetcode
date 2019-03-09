@@ -12,8 +12,9 @@ int reverse(int x) {
         }
         ret *= 10;
         tmp = x%10;
-        ret += tmp;
+        ret += abs(tmp);
         x /= 10;
+        printf("%d\n",ret);
     }
     if(negative){
         ret *= -1;
@@ -22,9 +23,9 @@ int reverse(int x) {
 }
 
 int main(){
-    //int ret = reverse(657);
+    int ret = reverse(-657);
     //int ret = reverse(1534236469);
-    int ret = reverse(-2147483648);
+    //int ret = reverse(-2147483648);
     printf("%d", ret);
     return 0;
 }
