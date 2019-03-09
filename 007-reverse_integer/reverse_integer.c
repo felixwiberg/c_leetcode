@@ -1,23 +1,18 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <limits.h>
 
 int reverse(int x) {
-    bool negative = x<0?true:false;
     int tmp = 0;
     int ret = 0;
     while(x!=0){
-        if (abs(ret) > 2147483648/10){
+        if (abs(ret) > INT_MAX/10){
             return 0;
         }
-        ret *= 10;
-        tmp = x%10;
-        ret += abs(tmp);
+        ret = ret*10 + x%10;
         x /= 10;
         printf("%d\n",ret);
-    }
-    if(negative){
-        ret *= -1;
     }
     return (int)ret;
 }
