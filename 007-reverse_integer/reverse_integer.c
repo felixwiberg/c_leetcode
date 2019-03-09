@@ -6,13 +6,15 @@ int reverse(int x) {
     if(negative){
         x *+ -1;
     }
-    int tmp, ret = 0;
+    long tmp, ret = 0;
     while(x>0){
         ret *= 10;
         tmp = x%10;
         ret += tmp;
         x /= 10;
-        printf("%d\n", ret);
+    }
+    if (ret > 2^31){
+        return 0;
     }
     if(negative){
         x *= -1;
@@ -21,7 +23,8 @@ int reverse(int x) {
 }
 
 int main(){
-    int ret = reverse(657);
+    //int ret = reverse(657);
+    int ret = reverse(1534236469);
     printf("%d", ret);
     return 0;
 }
