@@ -13,13 +13,13 @@ int reverse(int x) {
         ret += tmp;
         x /= 10;
     }
-    if (ret > 2^31){
+    if (ret > 2147483648){
         return 0;
     }
     if(negative){
         x *= -1;
     }
-    return ret;
+    return (int)ret;
 }
 
 int main(){
