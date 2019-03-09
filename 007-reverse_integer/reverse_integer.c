@@ -9,7 +9,6 @@ int reverse(int x) {
         if (abs(ret) > INT_MAX/10){return 0;}
         ret = ret*10 + x%10;
         x /= 10;
-        printf("%d\n",ret);
     }
     return ret;
 }
