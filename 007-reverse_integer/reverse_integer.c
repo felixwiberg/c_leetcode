@@ -11,7 +11,7 @@ int reverse(int x) {
         x /= 10;
         printf("%d\n",ret);
     }
-    return (int)ret;
+    return ret;
 }
 
 int main(){
